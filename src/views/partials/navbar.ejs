@@ -1,0 +1,13 @@
+<nav class="navbar navbar-dark bg-primary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">Blogging System</a>
+      <div>
+        <% if (currentUser) { %>
+        <a class="navbar-brand" href="/users/<%= currentUser.id %>"><%= currentUser.firstName %>'s Profile</a>
+        <a class="navbar-brand" href="/users">Users</a>
+        <a class="navbar-brand" href="/posts">Posts</a>
+        <a class="navbar-brand" href="/logout">Logout</a>
+        <%  } %>
+      </div>
+    </div>
+</nav>

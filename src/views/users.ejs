@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('partials/header') %>
+<body>
+    <%- include('partials/navbar') %>
+    <main class="d-flex flex-column bd-highlight mb-3 mt-5">
+        <% users.forEach(function(user) { %>
+            <a href="/users/<%= user.id %>" class="p-2 bd-highlight btn btn-primary col-1 mb-3 mx-auto"><%= user.firstName %> <%= user.lastName %></a>
+        <% }); %>
+    </main>
+    <script src="/scripts.js"></script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('partials/header') %>
+<body>
+    <%- include('partials/navbar') %>
+    <main>
+        <% if (!currentUser) { %>
+        <section class="vh-100 bg-image">
+            <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+            <div class="container h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+            <div class="card" style="border-radius: 15px;">
+            <div class="card-body p-5">
+                
+                <h2 class="text-center mb-5">Create an account!</h2>
+                <form action="/users" method="post">
+                    <div class="form-outline mb-4">
+                        <input type="text" name="firstname" id="form3Example1cg" class="form-control form-control-lg" required />
+                        <label class="form-label" for="form3Example1cg">First Name</label>
+                    </div>
+
+                    <div class="form-outline mb-4">
+                        <input type="text" name="lastname" id="form3Example1cg" class="form-control form-control-lg" required />
+                        <label class="form-label" for="form3Example1cg">Last Name</label>
+                    </div>
+
+                    <div class="form-outline mb-4">
+                        <input type="email" name="email" id="form3Example3cg" class="form-control form-control-lg" required />
+                        <label class="form-label" for="form3Example3cg">Your Email</label>
+                    </div>
+
+                    <div class="form-outline mb-4">
+                        <input type="password" name="password" id="form3Example4cg" class="form-control form-control-lg" required />
+                        <label class="form-label" for="form3Example4cg">Password</label>
+                    </div>
+
+                    <div class="d-flex justify-content-center">
+                        <button type="submit"
+                        class="btn btn-dark btn-block btn-lg gradient-custom-4">Sign Up</button>
+                    </div>
+
+                    <p class="text-center text-muted mt-5 mb-0">Have already an account? <a href="/login"
+                        class="fw-bold text-body"><u>Login</u></a></p>
+                </form>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    </div>
+    </section>
+    <%  } %> 
+    <% if (currentUser) { %>
+        <div class="mt-5 mx-auto">
+            <form action="/posts" method="post" >
+                <div class="d-flex col-5 mx-5">
+                    <textarea name="content" class="form-control col-1" id="exampleFormControlTextarea1" rows="3"
+                     placeholder="Write your post"></textarea>
+                </div>
+                <div class="mx-5 mt-5 col-10">
+                    <label for="categoryPostInput">Category</label>
+                    <input type="text" name="category" id="categoryPostInput" class="" optional>
+                    <button type="submit" class="btn btn-secondary col-sm-1 mx-5">post</button>
+                </div>
+            </form>
+            <a href="/posts" class="p-2 bd-highlight btn btn-primary col-1 mb-3 mx-5 mt-5">Go to Posts</a>
+        </div>
+    <%  } %>
+    </main>  
+</body>
+</html>

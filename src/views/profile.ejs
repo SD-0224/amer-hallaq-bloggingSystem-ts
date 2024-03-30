@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('partials/header') %>
+<body>
+    <%- include('partials/navbar') %>
+    <main>
+        
+            <div class="d-flex m-5">
+                <p class="px-2 fw-bolder text-decoration-underline">First Name:</p>
+                <p><%= user.firstName %></p>
+            </div>
+            <div class="d-flex m-5">
+                <p class="px-2 fw-bolder text-decoration-underline">Last Name:</p>
+                <p><%= user.lastName %></p>
+            </div>
+            <div class="d-flex m-5">
+                <p class="px-2 fw-bolder text-decoration-underline">Email:</p>
+                <p><%= user.email %></p>
+            </div>
+        <% if (isCurrentUser) { %>
+            <div class="d-flex">
+                <a href="/users/delete/<%= user.id %>" class="btn btn-primary mx-5">Delete</a>
+                <a href="#" class="btn btn-primary mx-5" onclick="showUpdateForm()">Update</a>
+            </div>
+        <%  } %>
+            <form action="/users/update/<%= user.id %>" method="post" class="mx-5 mt-5" id="updateForm">
+                <div class="form-group row">
+                    <label for="inputfirstname" class="col-sm-1 col-form-label">First Name</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="inputfirstname" value="<%= user.firstName %>" name="firstname">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputlastname" class="col-sm-1 col-form-label">Last Name</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="inputlastname" value="<%= user.lastName %>" name="lastname">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputemail" class="col-sm-1 col-form-label">Email</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="inputemail" value="<%= user.email %>" name="email">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-secondary mt-2">Submit</button>
+            </form>
+    </main>
+    <script src="/scripts.js"></script>
+</body>
+</html>

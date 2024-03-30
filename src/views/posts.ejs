@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('partials/header') %>
+<body>
+    <%- include('partials/navbar') %>
+    <main>
+        <% posts.forEach(function(post) { %>
+            <div class="d-flex align-items-start justify-content-between mx-5 mb-5 mt-2">
+                <a href="/posts/<%= post.id %>" class="mx-5"><%= post.content %></a>
+                <% if (currentUser.id===post.userId) { %>
+                    <a href="/posts/delete/<%= post.id %>" class="btn btn-danger btn-sm mx-5">Delete</a>
+                <%  } %>
+            </div>
+        <% }); %>
+    </main>
+    <script src="/scripts.js"></script>
+</body>
+</html>

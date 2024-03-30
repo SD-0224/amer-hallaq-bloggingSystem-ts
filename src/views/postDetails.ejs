@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('partials/header') %>
+<body>
+    <%- include('partials/navbar') %>
+    <main>
+        <div class="d-flex m-5">
+            <p><%= post.content %> by <a href="/users/<%= user.id %>" class="fst-italic"><%= user.firstName %></a></p>
+            <% if (currentUser.id===user.id) { %>
+                <a href="/posts/delete/<%= post.id %>" class="btn btn-danger btn-sm mx-5">Delete</a>
+                <a href="/posts/update/<%= post.id %>" class="btn btn-primary btn-sm mx-5">Update</a>
+                <%  } %>
+        </div>
+        <div class="comments border mx-5 mb-5 w-50">
+            <% comments.forEach(function(comment) { %>
+                <ul class="d-flex">
+                    <li class="px-2 mt-2"><a href="/users/<%= comment.User.id %>" class="fst-italic text-decoration-underline"><%= comment.User.firstName %></a> says: <%= comment.content %></li>
+                    <% if (currentUser.id===comment.userId) { %>
+                    <a href="#" class="btn btn-danger btn-sm mx-5">Delete</a>
+                    <%  } %>
+                </ul>
+            <% }); %>
+        </div>
+        <div>
+            <form action="/posts/<%= post.id %>/comments" method="post">
+                <div class="d-flex col-5 mx-5">
+                    <textarea name="content" class="form-control col-1" id="exampleFormControlTextarea1" rows="1"
+                     placeholder="Write your comment"></textarea>
+                    <button type="submit" class="btn btn-secondary col-2 mx-5">comment</button>
+                </div>
+            </form>
+        </div>
+    </main>
+        <script src="/scripts.js"></script>
+</body>
+</html>
