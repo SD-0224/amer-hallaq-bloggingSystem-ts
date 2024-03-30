@@ -2,7 +2,7 @@
 Enhance the blogging system project by implementing JWT (JSON Web Token) authentication to secure sensitive endpoints and protect user data.
 
 ## Instructions
-Follow the following general procedure:
+follow the following general procedure:
 * Install Required Packages
 * Generate JWT Secret
 * Protect Endpoints with JWT Authentication
